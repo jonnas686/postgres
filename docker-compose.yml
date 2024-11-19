@@ -1,0 +1,26 @@
+services:
+  postgres_db_dev:
+    image: postgres:16
+    container_name: postgres_db_dev
+    environment:
+      - POSTGRES_PASSWORD=developer
+      - POSTGRES_DB=app
+    ports:
+      - "25432:5432"
+    volumes:
+      - ./postgres-config:/etc/postgresql
+      - dev_postgres_data:/var/lib/postgresql/data
+    networks:
+      - pg_database_network
+    command:
+      - "postgres"
+      - "-c"
+      - "config_file=/etc/postgresql/postgresql.conf"
+
+volumes:
+  dev_postgres_data:
+
+
+networks:
+  pg_database_network:
+    driver: bridge
