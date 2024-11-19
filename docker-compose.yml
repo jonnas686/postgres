@@ -8,7 +8,8 @@ services:
     ports:
       - "25432:5432"
     volumes:
-      - ./postgres-config:/etc/postgresql
+      - ./postgres-config/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./postgres-config/pg_hba.conf:/etc/postgresql/pg_hba.conf
       - dev_postgres_data:/var/lib/postgresql/data
     networks:
       - pg_database_network
