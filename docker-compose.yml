@@ -11,8 +11,6 @@ services:
       # - ./postgres-config/postgresql.conf:/etc/postgresql/postgresql.conf
       - ./postgres-config/pg_hba.conf:/etc/postgresql/pg_hba.conf
       - dev_postgres_data:/var/lib/postgresql/data
-    networks:
-      - pg_database_network
     # command:
     #   - "postgres"
     #   - "-c"
@@ -22,6 +20,3 @@ volumes:
   dev_postgres_data:
 
 
-networks:
-  pg_database_network:
-    driver: bridge
